@@ -1,3 +1,6 @@
-# 象传客户管理系统
+# CRM Yao demo
 
-象传客户管理系统
+```bash
+yao migrate
+yao start
+```
