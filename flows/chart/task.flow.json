@@ -1,0 +1,18 @@
+{
+  "label": "Tasks",
+  "version": "1.0.0",
+  "description": "Tasks",
+  "nodes": [
+    {
+      "name": "Tasks",
+      "engine": "xiang",
+      "query": {
+        "select": ["name", "priority", "status"],
+        "from": "$task",
+        "orders": "created_at desc, priority asc",
+        "limit": 20
+      }
+    }
+  ],
+  "output": "{{$res.Tasks}}"
+}

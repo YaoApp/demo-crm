@@ -1,0 +1,30 @@
+{
+  "label": "Menu",
+  "version": "1.0.0",
+  "description": "Menu init",
+  "nodes": [
+    {
+      "name": "Items",
+      "engine": "xiang",
+      "script": "items"
+    },
+    {
+      "name": "clean",
+      "engine": "xiang",
+      "query": {
+        "sql": { "stmt": "delete from `xiang_menu`" }
+      }
+    },
+    {
+      "name": "Menu",
+      "process": "xiang.helper.ArraySplit",
+      "args": ["{{$res.Items}}"]
+    },
+    {
+      "name": "Insert",
+      "process": "models.xiang.menu.Insert",
+      "args": ["{{$res.Menu.columns}}", "{{$res.Menu.values}}"]
+    }
+  ],
+  "output": "success"
+}

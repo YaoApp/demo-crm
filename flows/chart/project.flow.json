@@ -1,0 +1,51 @@
+{
+  "label": "Projects",
+  "version": "1.0.0",
+  "description": "Projects",
+  "nodes": [
+    {
+      "name": "Projects",
+      "engine": "xiang",
+      "query": {
+        "debug": true,
+        "select": [
+          "customer.name as customer_name",
+          "customer.city",
+          "project.name",
+          "project.contact_name",
+          "project.contact_mobile",
+          "project.priority",
+          "project.process"
+        ],
+        "from": "$project",
+        "joins": [
+          {
+            "from": "customer",
+            "key": "customer.id",
+            "foreign": "project.customer_id",
+            "left": true
+          }
+        ],
+        "wheres": [
+          { "field": "priority", "in": ["A", "B"] },
+          {
+            "field": "process",
+            "in": [
+              "Connecting",
+              "Connected",
+              "Docking",
+              "Docked",
+              "Signing",
+              "Signed",
+              "FirstPay",
+              "Pending"
+            ]
+          }
+        ],
+        "orders": "project.created_at desc",
+        "limit": 20
+      }
+    }
+  ],
+  "output": "{{$res.Projects}}"
+}

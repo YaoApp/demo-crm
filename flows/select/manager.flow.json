@@ -1,0 +1,18 @@
+{
+  "label": "Admins",
+  "version": "1.0.0",
+  "description": "Admins",
+  "nodes": [
+    {
+      "name": "Admins",
+      "engine": "xiang",
+      "query": {
+        "select": ["id"],
+        "from": "$user",
+        "first": true
+      },
+      "orders": [":RAND()"]
+    }
+  ],
+  "output": "{{$in.0}}"
+}

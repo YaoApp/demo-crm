@@ -1,0 +1,17 @@
+{
+  "label": "Channels",
+  "version": "1.0.0",
+  "description": "Channels",
+  "nodes": [
+    {
+      "name": "Channels",
+      "engine": "xiang",
+      "query": {
+        "select": ["id", "name"],
+        "from": "channel",
+        "limit": 1000
+      }
+    }
+  ],
+  "output": "{{$res.Channels}}"
+}

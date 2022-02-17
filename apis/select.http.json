@@ -1,0 +1,59 @@
+{
+  "name": "Data Select",
+  "version": "1.0.0",
+  "description": "Data Select API",
+  "group": "select",
+  "guard": "-",
+  "paths": [
+    {
+      "path": "/channel",
+      "method": "GET",
+      "process": "flows.select.Channel",
+      "in": [":query-param"],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    },
+    {
+      "path": "/device",
+      "method": "GET",
+      "process": "flows.select.Device",
+      "in": [":query-param"],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    },
+    {
+      "path": "/customer",
+      "method": "GET",
+      "process": "flows.select.Customer",
+      "in": [":query-param"],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    },
+    {
+      "path": "/project",
+      "method": "GET",
+      "process": "flows.select.Project",
+      "in": [":query-param"],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    },
+    {
+      "path": "/xiang.user",
+      "method": "GET",
+      "process": "flows.select.User",
+      "in": [":query-param"],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "label": "Users",
+  "version": "1.0.0",
+  "description": "Users",
+  "nodes": [
+    {
+      "name": "Users",
+      "engine": "xiang",
+      "query": {
+        "select": ["id", "name"],
+        "from": "$xiang.user",
+        "limit": 1000
+      }
+    }
+  ],
+  "output": "{{$res.Users}}"
+}

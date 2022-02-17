@@ -1,0 +1,14 @@
+{
+  "ChannelName": {
+    "label": "Channel",
+    "view": {
+      "type": "formModal",
+      "props": {
+        "type": "view",
+        "value": ":channel.name",
+        "formId": ":channel.id",
+        "formName": "channel"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>飞书用户授权回调 | iqka.com</title>
+  </head>
+  <body class="overscroll-none">
+    It works! <a href="javascript:login()"> 调用API </a>
+    <script>
+      function login() {
+        var query = window.location.search;
+        window.setTimeout(function () {
+          window.location = "/api/feishu/login" + query;
+        }, 2);
+      }
+    </script>
+  </body>
+</html>

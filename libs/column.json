@@ -1,0 +1,874 @@
+{
+  "Label": {
+    "__comment": "column.Lable('ID',':id')",
+    "label": "{{$in.0}}",
+    "view": {
+      "props": {
+        "value": "{{$in.1}}"
+      }
+    }
+  },
+  "Link": {
+    "__comment": "column.Link('ID',':link')",
+    "label": "{{$in.0}}",
+    "view": {
+      "type": "a",
+      "props": {
+        "value": "{{$in.1}}",
+        "href": "{{$in.1}}",
+        "target": "_blank"
+      }
+    }
+  },
+  "Image": {
+    "__comment": "column.Image('Icon',':icon', 40)",
+    "label": "{{$in.0}}",
+    "view": {
+      "type": "image",
+      "props": {
+        "value": "{{$in.1}}",
+        "width": "{{$in.2}}",
+        "height": "{{$in.2}}"
+      }
+    },
+    "edit": {
+      "type": "upload",
+      "props": {
+        "value": "{{$in.1}}",
+        "filetype": "image",
+        "multiple": false,
+        "maxCount": 1
+      }
+    }
+  },
+  "Block": {
+    "__comment": "column.Block('LOGO', 'Short', 'Company')",
+    "view": {
+      "type": "block",
+      "components": {
+        "avatar": "{{$in.0}}",
+        "name": "{{$in.1}}",
+        "desc": "{{$in.2}}"
+      }
+    }
+  },
+  "Input": {
+    "__comment": "column.TextArea('Name', ':desc')",
+    "label": "{{$in.0}}",
+    "view": {
+      "type": "label",
+      "props": {
+        "value": "{{$in.1}}"
+      }
+    },
+    "edit": {
+      "type": "input",
+      "props": {
+        "value": "{{$in.1}}"
+      }
+    }
+  },
+  "TextArea": {
+    "__comment": "column.TextArea('Desp', ':desc', 4)",
+    "label": "{{$in.0}}",
+    "view": {
+      "type": "label",
+      "props": {
+        "value": "{{$in.1}}"
+      }
+    },
+    "edit": {
+      "type": "textArea",
+      "props": {
+        "value": "{{$in.1}}",
+        "rows": "{{$in.2}}"
+      }
+    }
+  },
+  "DateTime": {
+    "__comment": "column.DateTime('UpdatedAt',':updated_at', 'YYYY-MM-DD @hh:mm:ss')",
+    "label": "{{$in.0}}",
+    "view": {
+      "name": "label",
+      "props": {
+        "value": "{{$in.1}}",
+        "format": "{{$in.2}}"
+      }
+    }
+  },
+  "CreatedAt": {
+    "__comment": "column.CreatedAt",
+    "label": "CreatedAt",
+    "view": {
+      "name": "label",
+      "props": {
+        "value": ":created_at",
+        "format": "YYYY-MM-DD @hh:mm:ss"
+      }
+    }
+  },
+  "UpdatedAt": {
+    "__comment": "column.UpdatedAt",
+    "label": "UpdatedAt",
+    "view": {
+      "name": "label",
+      "props": {
+        "value": ":updated_at",
+        "format": "YYYY-MM-DD @hh:mm:ss"
+      }
+    }
+  },
+  "Images": {
+    "__comment": "column.Images('Images',':images', 40, 9)",
+    "label": "{{$in.0}}",
+    "view": {
+      "type": "image",
+      "props": {
+        "value": "{{$in.1}}",
+        "width": "{{$in.2}}",
+        "height": "{{$in.2}}"
+      }
+    },
+    "edit": {
+      "type": "upload",
+      "props": {
+        "value": "{{$in.1}}",
+        "filetype": "image",
+        "multiple": true,
+        "maxCount": "{{$in.3}}"
+      }
+    }
+  },
+  "SelectTag": {
+    "__comment": "column.SelectTag('Status', ':status', '[]')",
+    "label": "{{$in.0}}",
+    "view": {
+      "type": "tag",
+      "props": {
+        "value": "{{$in.1}}",
+        "options": "{{$in.2}}"
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "value": "{{$in.1}}",
+        "options": "{{$in.2}}"
+      }
+    }
+  },
+  "Relation": {
+    "__comment": "column.Relation",
+    "label": "Relation",
+    "view": {
+      "type": "tag",
+      "props": {
+        "value": ":relation",
+        "options": [
+          {
+            "label": "Regular",
+            "value": "Regular",
+            "color": "#41b883"
+          },
+          {
+            "label": "Connecting",
+            "value": "Connecting",
+            "color": "#ff5500"
+          },
+          {
+            "label": "Potential",
+            "value": "Potential",
+            "color": "#4b5169"
+          }
+        ]
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "value": ":relation",
+        "options": [
+          {
+            "label": "Regular",
+            "value": "Regular"
+          },
+          {
+            "label": "Connecting",
+            "value": "Connecting"
+          },
+          {
+            "label": "Potential",
+            "value": "Potential"
+          }
+        ]
+      }
+    }
+  },
+  "SelectRemote": {
+    "__comment": "column.SelectRemote('Parent','/api/kind/items', ':parent.name',  ':parent_id')",
+    "label": "{{$in.0}}",
+    "view": {
+      "name": "label",
+      "props": {
+        "value": "{{$in.2}}"
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "value": "{{$in.3}}",
+        "showSearch": true,
+        "remote": {
+          "api": "{{$in.1}}",
+          "query": {
+            "select": ["id", "name"],
+            "keyword": "where_name_like"
+          }
+        }
+      }
+    }
+  },
+  "Priority": {
+    "__comment": "column.Priority",
+    "label": "Priority",
+    "view": {
+      "type": "tag",
+      "props": {
+        "value": ":priority",
+        "options": [
+          {
+            "label": "A",
+            "value": "A",
+            "color": "#ff5500"
+          },
+          {
+            "label": "B",
+            "value": "B",
+            "color": "#ff5500"
+          },
+          {
+            "label": "C",
+            "value": "C",
+            "color": "#41b883"
+          },
+          {
+            "label": "D",
+            "value": "D",
+            "color": "#4b5169"
+          }
+        ]
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "value": ":priority",
+        "options": [
+          {
+            "label": "A",
+            "value": "A",
+            "color": "#ff5500"
+          },
+          {
+            "label": "B",
+            "value": "D",
+            "color": "#ff5500"
+          },
+          {
+            "label": "C",
+            "value": "C",
+            "color": "#41b883"
+          },
+          {
+            "label": "D",
+            "value": "D",
+            "color": "#4b5169"
+          }
+        ]
+      }
+    }
+  },
+  "Suitability": {
+    "__comment": "column.Suitability",
+    "label": "Suitability",
+    "view": {
+      "type": "tag",
+      "props": {
+        "value": ":suitability",
+        "options": [
+          {
+            "label": "100",
+            "value": "100",
+            "color": "#41b883"
+          },
+          {
+            "label": "80",
+            "value": "80",
+            "color": "#41b883"
+          },
+          {
+            "label": "60",
+            "value": "60",
+            "color": "#41b883"
+          },
+          {
+            "label": "40",
+            "value": "40",
+            "color": "#4b5169"
+          },
+          {
+            "label": "20",
+            "value": "20",
+            "color": "#4b5169"
+          },
+          {
+            "label": "Checking",
+            "value": "0",
+            "color": "#ff5500"
+          }
+        ]
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "value": ":suitability",
+        "options": [
+          {
+            "label": "100",
+            "value": "100",
+            "color": "#41b883"
+          },
+          {
+            "label": "80",
+            "value": "80",
+            "color": "#41b883"
+          },
+          {
+            "label": "60",
+            "value": "60",
+            "color": "#41b883"
+          },
+          {
+            "label": "40",
+            "value": "40",
+            "color": "#4b5169"
+          },
+          {
+            "label": "20",
+            "value": "20",
+            "color": "#4b5169"
+          },
+          {
+            "label": "Checking",
+            "value": "0",
+            "color": "#ff5500"
+          }
+        ]
+      }
+    }
+  },
+  "Intention": {
+    "__comment": "column.Intention",
+    "label": "Intention",
+    "view": {
+      "type": "tag",
+      "props": {
+        "value": ":intention",
+        "options": [
+          {
+            "label": "100",
+            "value": "100",
+            "color": "#41b883"
+          },
+          {
+            "label": "80",
+            "value": "80",
+            "color": "#41b883"
+          },
+          {
+            "label": "60",
+            "value": "60",
+            "color": "#41b883"
+          },
+          {
+            "label": "40",
+            "value": "40",
+            "color": "#4b5169"
+          },
+          {
+            "label": "20",
+            "value": "20",
+            "color": "#4b5169"
+          },
+          {
+            "label": "Checking",
+            "value": "0",
+            "color": "#ff5500"
+          }
+        ]
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "value": ":intention",
+        "options": [
+          {
+            "label": "100",
+            "value": "100",
+            "color": "#41b883"
+          },
+          {
+            "label": "80",
+            "value": "80",
+            "color": "#41b883"
+          },
+          {
+            "label": "60",
+            "value": "60",
+            "color": "#41b883"
+          },
+          {
+            "label": "40",
+            "value": "40",
+            "color": "#4b5169"
+          },
+          {
+            "label": "20",
+            "value": "20",
+            "color": "#4b5169"
+          },
+          {
+            "label": "Checking",
+            "value": "0",
+            "color": "#ff5500"
+          }
+        ]
+      }
+    }
+  },
+  "Process": {
+    "__comment": "column.Process",
+    "label": "Process",
+    "view": {
+      "type": "tag",
+      "props": {
+        "value": ":process",
+        "options": [
+          {
+            "label": "Connecting",
+            "value": "Connecting",
+            "color": "#ff5500"
+          },
+          {
+            "label": "Connected",
+            "value": "Connected",
+            "color": "#4b5169"
+          },
+          {
+            "label": "Docking",
+            "value": "Docking",
+            "color": "#4b5169"
+          },
+          {
+            "label": "Docked",
+            "value": "Docked",
+            "color": "#41b883"
+          },
+          {
+            "label": "Signing",
+            "value": "Signing",
+            "color": "#41b883"
+          },
+          {
+            "label": "Signed",
+            "value": "Signed",
+            "color": "#41b883"
+          },
+          {
+            "label": "FirstPay",
+            "value": "FirstPay",
+            "color": "#41b883"
+          },
+          {
+            "label": "Pending",
+            "value": "Pending",
+            "color": "#41b883"
+          },
+          {
+            "label": "Completed",
+            "value": "Completed",
+            "color": "#41b883"
+          },
+          {
+            "label": "Paid",
+            "value": "Paid",
+            "color": "#41b883"
+          }
+        ]
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "value": ":process",
+        "options": [
+          {
+            "label": "Connecting",
+            "value": "Connecting",
+            "color": "#ff5500"
+          },
+          {
+            "label": "Connected",
+            "value": "Connected",
+            "color": "#4b5169"
+          },
+          {
+            "label": "Docking",
+            "value": "Docking",
+            "color": "#4b5169"
+          },
+          {
+            "label": "Docked",
+            "value": "Docked",
+            "color": "#41b883"
+          },
+          {
+            "label": "Signing",
+            "value": "Signing",
+            "color": "#41b883"
+          },
+          {
+            "label": "Signed",
+            "value": "Signed",
+            "color": "#41b883"
+          },
+          {
+            "label": "FirstPay",
+            "value": "FirstPay",
+            "color": "#41b883"
+          },
+          {
+            "label": "Pending",
+            "value": "Pending",
+            "color": "#41b883"
+          },
+          {
+            "label": "Completed",
+            "value": "Completed",
+            "color": "#41b883"
+          },
+          {
+            "label": "Paid",
+            "value": "Paid",
+            "color": "#41b883"
+          }
+        ]
+      }
+    }
+  },
+  "BizManager": {
+    "label": "BizManager",
+    "view": {
+      "type": "label",
+      "props": {
+        "value": ":biz.name"
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "showSearch": true,
+        "placeholder": "Biz Mannager",
+        "value": ":biz_id",
+        "remote": {
+          "api": "/api/select/xiang.user",
+          "query": {
+            "select": ["id", "name"],
+            "keyword": "where.biz_id.in"
+          }
+        }
+      }
+    }
+  },
+  "Plan": {
+    "__comment": "column.Plan",
+    "label": "Plan",
+    "view": {
+      "name": "label",
+      "props": {
+        "value": ":plan",
+        "format": "YYYY-MM-DD @hh:mm:ss"
+      }
+    },
+    "edit": {
+      "type": "datePicker",
+      "props": {
+        "value": ":plan",
+        "showTime": true
+      }
+    }
+  },
+  "TaskStatus": {
+    "label": "TaskStatus",
+    "view": {
+      "type": "tag",
+      "props": {
+        "value": ":status",
+        "options": [
+          {
+            "label": "Completed",
+            "value": "Completed",
+            "color": "#41b883"
+          },
+          {
+            "label": "Pending",
+            "value": "Pending",
+            "color": "#ff5500"
+          },
+          {
+            "label": "Create",
+            "value": "Create",
+            "color": "#4b5169"
+          }
+        ]
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "value": ":status",
+        "options": [
+          {
+            "label": "Completed",
+            "value": "Completed",
+            "color": "#41b883"
+          },
+          {
+            "label": "Pending",
+            "value": "Pending",
+            "color": "#ff5500"
+          },
+          {
+            "label": "Create",
+            "value": "Create",
+            "color": "#4b5169"
+          }
+        ]
+      }
+    }
+  },
+  "Manager": {
+    "label": "Manager",
+    "view": {
+      "type": "label",
+      "props": {
+        "value": ":user.name"
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "showSearch": true,
+        "placeholder": "Assign Manager",
+        "value": ":user_id",
+        "remote": {
+          "api": "/api/select/xiang.user",
+          "query": {
+            "select": ["id", "name"],
+            "keyword": "where.biz_id.in"
+          }
+        }
+      }
+    }
+  },
+  "Project": {
+    "label": "Project",
+    "view": {
+      "type": "label",
+      "props": {
+        "value": ":project.name"
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "showSearch": true,
+        "placeholder": "Pick a project",
+        "value": ":project_id",
+        "remote": {
+          "api": "/api/select/project",
+          "query": {
+            "select": ["id", "name"],
+            "keyword": "where.biz_id.in"
+          }
+        }
+      }
+    }
+  },
+  "Device": {
+    "label": "Device",
+    "view": {
+      "type": "label",
+      "props": {
+        "value": ":device.name"
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "showSearch": true,
+        "placeholder": "Pick a device",
+        "value": ":device_id",
+        "remote": {
+          "api": "/api/select/device",
+          "query": {
+            "select": ["id", "name"],
+            "keyword": "where.device_id.in"
+          }
+        }
+      }
+    }
+  },
+  "SignAt": {
+    "__comment": "column.SignAt",
+    "label": "SignAt",
+    "view": {
+      "name": "label",
+      "props": {
+        "value": ":sign_at",
+        "format": "YYYY-MM-DD"
+      }
+    },
+    "edit": {
+      "type": "datePicker",
+      "props": {
+        "value": ":sign_at"
+      }
+    }
+  },
+  "ExpiredAt": {
+    "__comment": "column.ExpiredAt",
+    "label": "ExpiredAt",
+    "view": {
+      "name": "label",
+      "props": {
+        "value": ":expired_at",
+        "format": "YYYY-MM-DD"
+      }
+    },
+    "edit": {
+      "type": "datePicker",
+      "props": {
+        "value": ":expired_at"
+      }
+    }
+  },
+  "ContractStatus": {
+    "label": "Status",
+    "view": {
+      "type": "tag",
+      "props": {
+        "value": ":status",
+        "options": [
+          {
+            "label": "Signed",
+            "value": "Signed",
+            "color": "#41b883"
+          },
+          {
+            "label": "Pending",
+            "value": "Pending",
+            "color": "#ff5500"
+          },
+          {
+            "label": "Create",
+            "value": "Create",
+            "color": "#4b5169"
+          }
+        ]
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "value": ":status",
+        "options": [
+          {
+            "label": "Signed",
+            "value": "Signed",
+            "color": "#41b883"
+          },
+          {
+            "label": "Pending",
+            "value": "Pending",
+            "color": "#ff5500"
+          },
+          {
+            "label": "Create",
+            "value": "Create",
+            "color": "#4b5169"
+          }
+        ]
+      }
+    }
+  },
+  "OpenedAt": {
+    "__comment": "column.OpenedAt",
+    "label": "OpenedAt",
+    "view": {
+      "name": "label",
+      "props": {
+        "value": ":opened_at",
+        "format": "YYYY-MM-DD"
+      }
+    },
+    "edit": {
+      "type": "datePicker",
+      "props": {
+        "value": ":opened_at"
+      }
+    }
+  },
+  "Files": {
+    "label": "Files",
+    "view": {
+      "type": "file",
+      "props": {
+        "value": ":files",
+        "width": 40,
+        "height": 40
+      }
+    },
+    "edit": {
+      "type": "upload",
+      "props": {
+        "value": ":files",
+        "filetype": "file",
+        "multiple": true,
+        "maxCount": 9
+      }
+    }
+  },
+  "ScanFiles": {
+    "label": "ScanFiles",
+    "view": {
+      "type": "file",
+      "props": {
+        "value": ":files",
+        "width": 40,
+        "height": 40
+      }
+    },
+    "edit": {
+      "type": "upload",
+      "props": {
+        "value": ":files",
+        "filetype": "file",
+        "multiple": true,
+        "maxCount": 9
+      }
+    }
+  }
+}

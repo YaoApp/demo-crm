@@ -1,0 +1,148 @@
+{
+  "name": "Customers",
+  "version": "1.0.0",
+  "decription": "Customers table",
+  "bind": {
+    "model": "customer"
+  },
+  "apis": {
+    "search": {
+      "default": [
+        {
+          "withs": { "channel": {} },
+          "orders": [{ "column": "updated_at", "option": "desc" }]
+        },
+        null,
+        10
+      ]
+    }
+  },
+  "columns": {
+    "ID": { "@": "column.Label", "in": ["ID", ":id"] },
+    "LOGO": { "@": "column.Image", "in": ["LOGO", ":logo", 40] },
+    "Description": {
+      "@": "column.TextArea",
+      "in": ["Description", ":desc", 4]
+    },
+    "Relation": { "@": "column.Relation" },
+    "CreatedAt": { "@": "column.CreatedAt" },
+    "OpenedAt": { "@": "column.OpenedAt" },
+    "UpdatedAt": { "@": "column.UpdatedAt" },
+    "Channel": { "@": "channel.ChannelName" },
+    "Customers": {
+      "@": "column.Block",
+      "in": ["LOGO", "ShortName", "Company"]
+    },
+    "Projects": {
+      "label": "Projects",
+      "edit": {
+        "type": "table",
+        "props": {
+          "name": "project.db",
+          "query": { "where.customer_id.eq": ":id" }
+        }
+      }
+    },
+    "Tasks": {
+      "label": "Tasks",
+      "edit": {
+        "type": "table",
+        "props": {
+          "name": "task.db",
+          "query": { "where.project_id.eq": ":id" }
+        }
+      }
+    }
+  },
+  "filters": {
+    "Keywords": { "@": "filter.Keywords", "in": ["where.name.match"] },
+    "Orders": { "@": "filter.Orders" },
+    "Relation": { "@": "filter.Relation" }
+  },
+  "list": {
+    "primary": "id",
+    "layout": {
+      "columns": [
+        { "name": "ID", "width": 80 },
+        { "name": "Customers", "width": 300 },
+        { "name": "Relation", "width": 120 },
+        { "name": "City", "width": 100 },
+        { "name": "Contact" },
+        { "name": "Mobile", "width": 140 },
+        { "name": "Channel", "width": 100 },
+        { "name": "UpdatedAt" }
+      ],
+      "filters": [
+        { "name": "Keywords" },
+        { "name": "Relation", "width": 3 },
+        { "name": "Orders", "width": 3 }
+      ]
+    },
+    "actions": {
+      "create": {
+        "type": "button",
+        "props": {
+          "label": "Create New",
+          "icon": "fas fa-plus"
+        }
+      },
+      "pagination": {
+        "props": { "showTotal": true }
+      }
+    },
+    "option": {
+      "operation": { "unfold": true }
+    }
+  },
+  "edit": {
+    "primary": "id",
+    "layout": {
+      "fieldset": [
+        {
+          "columns": [
+            { "name": "Company", "width": 12 },
+            { "name": "Relation", "width": 12 },
+            { "name": "ShortName", "width": 12 },
+            { "name": "Contact", "width": 12 },
+            { "name": "ContactTitle", "width": 12 },
+            { "name": "Mobile", "width": 12 },
+            { "name": "Wechat", "width": 12 },
+            {
+              "name": "Projects",
+              "width": 24
+            },
+            {
+              "name": "Tasks",
+              "width": 24
+            }
+          ]
+        },
+        {
+          "title": "Location",
+          "description": "",
+          "columns": [
+            { "name": "Province", "width": 12 },
+            { "name": "City", "width": 12 },
+            { "name": "Address", "width": 24 }
+          ]
+        },
+        {
+          "title": "Details",
+          "description": "",
+          "columns": [
+            { "name": "LOGO", "width": 24 },
+            { "name": "Homepage", "width": 24 },
+            { "name": "Description", "width": 24 }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "cancel": {},
+      "save": { "@": "action.Save" },
+      "delete": { "@": "action.Delete" }
+    }
+  },
+  "insert": {},
+  "view": {}
+}

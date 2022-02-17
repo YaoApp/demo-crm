@@ -1,0 +1,80 @@
+{
+  "name": "Channels",
+  "version": "1.0.0",
+  "decription": "Channels",
+  "bind": {
+    "model": "channel"
+  },
+  "apis": {
+    "search": {
+      "default": [
+        { "orders": [{ "column": "updated_at", "option": "desc" }] },
+        null,
+        10
+      ]
+    }
+  },
+  "columns": {
+    "ID": { "@": "column.Label", "in": ["ID", ":id"] },
+    "Homepage": { "@": "column.Link", "in": ["Homepage", ":link"] },
+    "Description": {
+      "@": "column.TextArea",
+      "in": ["Description", ":desc", 4]
+    },
+    "CreatedAt": { "@": "column.CreatedAt" },
+    "UpdatedAt": { "@": "column.UpdatedAt" }
+  },
+  "filters": {
+    "Keywords": { "@": "filter.Keywords", "in": ["where.name.match"] }
+  },
+  "list": {
+    "primary": "id",
+    "layout": {
+      "columns": [
+        { "name": "ID", "width": 80 },
+        { "name": "Name", "width": 100 },
+        { "name": "Homepage", "width": 260 },
+        { "name": "Contact", "width": 100 },
+        { "name": "Mobile", "width": 140 },
+        { "name": "UpdatedAt" }
+      ],
+      "filters": [{ "name": "Keywords" }]
+    },
+    "actions": {
+      "create": {
+        "type": "button",
+        "props": { "label": "Create New", "icon": "fas fa-plus" }
+      },
+      "pagination": {
+        "props": { "showTotal": true }
+      }
+    },
+    "option": {}
+  },
+  "edit": {
+    "primary": "id",
+    "layout": {
+      "fieldset": [
+        {
+          "columns": [
+            { "name": "Name", "width": 12 },
+            { "name": "link", "width": 12 },
+            { "name": "Summary", "width": 24 },
+            { "name": "Contact", "width": 12 },
+            { "name": "Mobile", "width": 12 },
+            { "name": "Wechat", "width": 12 },
+            { "name": "Contact Title", "width": 12 },
+            { "name": "Description", "width": 24 }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "cancel": {},
+      "save": { "@": "action.Save" },
+      "delete": { "@": "action.Delete" }
+    }
+  },
+  "insert": {},
+  "view": {}
+}

@@ -1,0 +1,139 @@
+{
+  "name": "Administrator",
+  "version": "1.0.0",
+  "decription": "Administrator",
+  "guard": "flows.xiang.admin.guard",
+  "bind": {
+    "model": "xiang.user"
+  },
+  "apis": {
+    "find": { "process": "flows.xiang.user.find" },
+    "search": {
+      "default": [
+        { "select": ["id", "name", "type", "mobile", "email", "status"] },
+        1,
+        10
+      ]
+    }
+  },
+  "columns": {
+    "ID": { "@": "column.Label", "in": ["ID", ":id"] },
+    "Name": { "@": "column.Input", "in": ["Name", ":name"] },
+    "Email": { "@": "column.Input", "in": ["Email", ":email"] },
+    "Status": {
+      "label": "Status",
+      "view": { "type": "label", "props": { "value": ":status" } },
+      "edit": {
+        "type": "select",
+        "props": {
+          "value": ":status",
+          "options": [
+            { "label": "enabled", "value": "enabled" },
+            { "label": "disabled", "value": "disabled" }
+          ]
+        }
+      }
+    },
+    "Type": {
+      "label": "Type",
+      "view": { "type": "label", "props": { "value": ":type" } },
+      "edit": {
+        "type": "select",
+        "props": {
+          "options": [
+            { "label": "admin", "value": "admin" },
+            { "label": "staff", "value": "staff" },
+            { "label": "user", "value": "user" },
+            { "label": "robot", "value": "robot" }
+          ],
+          "value": ":type"
+        }
+      }
+    },
+    "Password": {
+      "label": "Password",
+      "view": {
+        "type": "label",
+        "props": {
+          "value": ":password"
+        }
+      },
+      "edit": {
+        "type": "input",
+        "props": {
+          "value": ":password",
+          "type": "password"
+        }
+      }
+    }
+  },
+  "filters": {
+    "Keywords": {
+      "label": "Keywords",
+      "bind": "where.name.match",
+      "input": {
+        "type": "input",
+        "props": {
+          "placeholder": "Enter Keywords"
+        }
+      }
+    }
+  },
+  "list": {
+    "primary": "id",
+    "layout": {
+      "columns": [
+        { "name": "ID", "width": 60 },
+        { "name": "Email", "width": 200 },
+        { "name": "Name", "width": 200 },
+        { "name": "Type", "width": 100 },
+        { "name": "Status" }
+      ],
+      "filters": [{ "name": "Keywords", "width": 6 }]
+    },
+    "actions": {
+      "create": {
+        "type": "button",
+        "props": {
+          "label": "Create New",
+          "icon": "fas fa-plus"
+        }
+      },
+      "view": {},
+      "edit": {},
+      "import": {},
+      "update": {},
+      "delete": {},
+      "insert": {},
+      "updateWhere": {},
+      "deleteWhere": {},
+      "updateSelect": {},
+      "deleteSelect": {},
+      "pagination": {},
+      "setting": {}
+    },
+    "option": { "operation": { "unfold": true } }
+  },
+  "edit": {
+    "primary": "id",
+    "layout": {
+      "fieldset": [
+        {
+          "columns": [
+            { "name": "Name", "width": 12 },
+            { "name": "Type", "width": 12 },
+            { "name": "Email", "width": 12 },
+            { "name": "Password", "width": 12 }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "cancel": {},
+      "save": { "type": "button", "props": { "label": "Save" } },
+      "delete": { "type": "button", "props": { "label": "Delete" } }
+    }
+  },
+  "insert": {},
+  "view": {}
+}

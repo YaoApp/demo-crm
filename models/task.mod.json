@@ -1,0 +1,113 @@
+{
+  "name": "Task",
+  "table": {
+    "name": "task",
+    "comment": "Task",
+    "engine": "InnoDB"
+  },
+  "columns": [
+    {
+      "label": "ID",
+      "name": "id",
+      "type": "ID",
+      "comment": "ID"
+    },
+    {
+      "label": "Project",
+      "name": "project_id",
+      "type": "bigInteger",
+      "comment": "Project",
+      "index": true
+    },
+    {
+      "label": "Manager",
+      "name": "user_id",
+      "type": "bigInteger",
+      "comment": "Manager",
+      "index": true
+    },
+    {
+      "label": "Task",
+      "name": "name",
+      "type": "string",
+      "length": 600,
+      "comment": "Task",
+      "index": true
+    },
+    {
+      "label": "Summary",
+      "name": "summary",
+      "type": "string",
+      "length": 600,
+      "comment": "Summary",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Description",
+      "name": "desc",
+      "type": "text",
+      "comment": "Description",
+      "nullable": true
+    },
+    {
+      "label": "Files",
+      "name": "files",
+      "type": "json",
+      "comment": "Files",
+      "nullable": true
+    },
+    {
+      "label": "Report",
+      "name": "report",
+      "type": "text",
+      "comment": "Report",
+      "nullable": true
+    },
+    {
+      "label": "Plan",
+      "name": "plan",
+      "type": "datetime",
+      "comment": "Plan",
+      "nullable": true
+    },
+    {
+      "label": "Priority",
+      "name": "priority",
+      "type": "enum",
+      "default": "C",
+      "option": ["A", "B", "C", "D"],
+      "comment": "Priority: A  B  C  D ",
+      "index": true
+    },
+    {
+      "label": "Status",
+      "name": "status",
+      "type": "enum",
+      "default": "Create",
+      "option": ["Completed", "Pending", "Create"],
+      "comment": "Status: Completed, Pending, Create",
+      "index": true
+    }
+  ],
+  "relations": {
+    "project": {
+      "type": "hasOne",
+      "model": "project",
+      "key": "id",
+      "foreign": "project_id",
+      "query": {}
+    },
+    "user": {
+      "type": "hasOne",
+      "model": "xiang.user",
+      "key": "id",
+      "foreign": "user_id",
+      "query": {}
+    }
+  },
+  "option": {
+    "timestamps": true,
+    "soft_deletes": true
+  }
+}

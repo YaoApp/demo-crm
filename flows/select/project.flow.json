@@ -1,0 +1,17 @@
+{
+  "label": "Projects",
+  "version": "1.0.0",
+  "description": "Projects",
+  "nodes": [
+    {
+      "name": "Projects",
+      "engine": "xiang",
+      "query": {
+        "select": ["id", "name"],
+        "from": "$project",
+        "limit": 1000
+      }
+    }
+  ],
+  "output": "{{$res.Projects}}"
+}

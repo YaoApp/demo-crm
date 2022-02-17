@@ -1,0 +1,63 @@
+{
+  "Keywords": {
+    "__comment": "filter.Keywords('where.name.match')",
+    "label": "Keywords",
+    "bind": "{{$in.0}}",
+    "input": {
+      "type": "input",
+      "props": {
+        "placeholder": "Enter Keywords"
+      }
+    }
+  },
+  "Channel": {
+    "label": "Channel",
+    "bind": "where.channel_id.in",
+    "input": {
+      "type": "select",
+      "props": {
+        "showSearch": true,
+        "placeholder": "Select Channel",
+        "remote": {
+          "api": "/api/select/channel",
+          "query": {
+            "select": ["id", "name"],
+            "keyword": "where_name_like"
+          }
+        }
+      }
+    }
+  },
+  "Orders": {
+    "__comment": "filter.Orders()",
+    "label": "Orders方式",
+    "bind": "order",
+    "input": {
+      "type": "select",
+      "props": {
+        "placeholder": "Orders",
+        "options": [
+          { "label": "Latest", "value": "updated_at.desc" },
+          { "label": "Craeted", "value": "created_at.desc" }
+        ]
+      }
+    }
+  },
+  "Relation": {
+    "__comment": "filter.Relation()",
+    "label": "Relation",
+    "bind": "where.relation.in",
+    "input": {
+      "type": "select",
+      "props": {
+        "placeholder": "Pick Relations",
+        "mode": "multiple",
+        "options": [
+          { "label": "Regular", "value": "Regular", "color": "#41b883" },
+          { "label": "Connecting", "value": "Connecting", "color": "#ff5500" },
+          { "label": "Potential", "value": "Potential", "color": "#4b5169" }
+        ]
+      }
+    }
+  }
+}

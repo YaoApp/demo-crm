@@ -1,0 +1,13 @@
+[[tls.certificates]]
+  certFile = "/data/certs/star.yaoapps.com.crt"
+  keyFile = "/data/certs/star.yaoapps.com.key"
+
+[http.routers.demo-crm]
+  tls = true
+  rule = "Host(`demo-crm.yaoapps.com`)"
+  service = "demo-crm@file"
+
+[http.services]
+  [http.services.demo-crm.loadBalancer]
+    [[http.services.demo-crm.loadBalancer.servers]]
+      url = "http://127.0.0.1:5098/"

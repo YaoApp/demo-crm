@@ -1,0 +1,14 @@
+{
+  "Save": {
+    "type": "button",
+    "props": {
+      "label": "Save"
+    }
+  },
+  "Delete": {
+    "type": "button",
+    "props": {
+      "label": "Delete"
+    }
+  }
+}

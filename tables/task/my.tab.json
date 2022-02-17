@@ -1,0 +1,121 @@
+{
+  "name": "My Tasks",
+  "version": "1.0.0",
+  "decription": "My Tasks",
+  "bind": {
+    "model": "task"
+  },
+  "apis": {
+    "search": {
+      "default": [
+        {
+          "withs": {
+            "project": { "query": { "withs": { "customer": {} } } },
+            "user": {}
+          },
+          "wheres": [{ "column": "user_id", "value": 1 }],
+          "orders": [
+            { "column": "priority", "option": "asc" },
+            { "column": "plan", "option": "asc" }
+          ]
+        },
+        null,
+        10
+      ]
+    }
+  },
+  "columns": {
+    "ID": { "@": "column.Label", "in": ["ID", ":id"] },
+    "CreatedAt": { "@": "column.CreatedAt" },
+    "UpdatedAt": { "@": "column.UpdatedAt" },
+    "Priority": { "@": "column.Priority" },
+    "Plan": { "@": "column.Plan" },
+    "TaskStatus": { "@": "column.TaskStatus" },
+    "Manager": { "@": "column.Manager" },
+    "Project": {
+      "label": "Project",
+      "view": {
+        "type": "label",
+        "props": {
+          "value": ":project.name"
+        }
+      }
+    },
+    "Task Project": { "@": "column.Project" },
+    "Files": { "@": "column.Files" },
+    "Report": { "@": "column.TextArea", "in": ["Report", ":report", 4] },
+    "Description": { "@": "column.TextArea", "in": ["Description", ":desc", 4] }
+  },
+  "filters": {
+    "Keywords": { "@": "filter.Keywords", "in": ["where.name.match"] },
+    "Orders": { "@": "filter.Orders" }
+  },
+  "list": {
+    "primary": "id",
+    "layout": {
+      "columns": [
+        { "name": "Priority", "width": 100 },
+        { "name": "Task", "width": 400 },
+        { "name": "TaskStatus", "width": 100 },
+        { "name": "Manager", "width": 100 },
+        { "name": "Plan", "width": 160 },
+        { "name": "Project" }
+      ],
+      "filters": [{ "name": "Keywords" }, { "name": "Orders", "width": 3 }]
+    },
+    "actions": {
+      "create": {
+        "type": "button",
+        "props": {
+          "label": "Create New",
+          "icon": "fas fa-plus"
+        }
+      },
+      "pagination": {
+        "props": { "showTotal": true }
+      }
+    },
+    "option": {
+      "batch": {
+        "delete": {},
+        "columns": [
+          { "name": "Relation", "width": 12 },
+          { "name": "类型", "width": 12 },
+          { "name": "Orders", "width": 12 }
+        ]
+      }
+    }
+  },
+  "edit": {
+    "primary": "id",
+    "layout": {
+      "fieldset": [
+        {
+          "columns": [
+            { "name": "Priority", "width": 4 },
+            { "name": "Task", "width": 12 },
+            { "name": "Plan", "width": 4 },
+            { "name": "TaskStatus", "width": 4 },
+            { "name": "Manager", "width": 4 },
+            { "name": "Description", "width": 12 },
+            { "name": "Task Project", "width": 8 },
+            { "name": "Description", "width": 24 },
+            { "name": "Files", "width": 24 }
+          ]
+        },
+        {
+          "title": "Review",
+          "description": "",
+          "columns": [{ "name": "Report", "width": 24 }]
+        }
+      ]
+    },
+    "actions": {
+      "cancel": {},
+      "save": { "@": "action.Save" },
+      "delete": { "@": "action.Delete" }
+    }
+  },
+  "insert": {},
+  "view": {}
+}

@@ -1,0 +1,240 @@
+{
+  "name": "Customer",
+  "table": {
+    "name": "customer",
+    "comment": "Customer table",
+    "engine": "InnoDB"
+  },
+  "columns": [
+    {
+      "label": "ID",
+      "name": "id",
+      "type": "ID",
+      "comment": "ID"
+    },
+    {
+      "label": "Channel",
+      "name": "channel_id",
+      "type": "bigInteger",
+      "comment": "Customer Channel"
+    },
+    {
+      "label": "Company",
+      "name": "name",
+      "type": "string",
+      "length": 200,
+      "comment": "Company",
+      "unique": true
+    },
+    {
+      "label": "ShortName",
+      "name": "short_name",
+      "type": "string",
+      "length": 200,
+      "comment": "ShortName",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "name": "credit_no",
+      "type": "string",
+      "length": 200,
+      "comment": "Credit no",
+      "nullable": true,
+      "unique": true
+    },
+    {
+      "name": "oper_name",
+      "type": "string",
+      "length": 50,
+      "comment": "Oper name",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "RegCAPI",
+      "name": "reg_capi",
+      "type": "decimal",
+      "comment": "RegCAPI",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "OpenedAt",
+      "name": "opened_at",
+      "type": "date",
+      "comment": "OpenedAt",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Province",
+      "name": "province",
+      "type": "string",
+      "length": 50,
+      "comment": "Province",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "City",
+      "name": "city",
+      "type": "string",
+      "length": 100,
+      "comment": "City",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Address",
+      "name": "address",
+      "type": "string",
+      "length": 255,
+      "comment": "Address",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Longitude",
+      "name": "lng",
+      "type": "unsignedDecimal",
+      "precision": 12,
+      "scale": 6,
+      "comment": "Longitude",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Latitude",
+      "name": "lat",
+      "type": "unsignedDecimal",
+      "comment": "Latitude",
+      "precision": 12,
+      "scale": 6,
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "CompanyStatus",
+      "name": "company_status",
+      "type": "string",
+      "length": 255,
+      "comment": "CompanyStatus",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "LOGO",
+      "name": "logo",
+      "type": "json",
+      "comment": "LOGO",
+      "nullable": true
+    },
+    {
+      "label": "简介",
+      "name": "summary",
+      "type": "string",
+      "length": 600,
+      "comment": "简介",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Homepage",
+      "name": "link",
+      "type": "string",
+      "length": 200,
+      "comment": "Homepage",
+      "nullable": true
+    },
+    {
+      "label": "Contact",
+      "name": "contact_name",
+      "type": "string",
+      "length": 200,
+      "comment": "Contact",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "ContactTitle",
+      "name": "contact_title",
+      "type": "string",
+      "length": 200,
+      "comment": "ContactTitle",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Mobile",
+      "name": "contact_mobile",
+      "type": "string",
+      "comment": "Mobile",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Wechat",
+      "name": "contact_wechat",
+      "type": "string",
+      "comment": "Wechat",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Description",
+      "name": "desc",
+      "type": "text",
+      "comment": "Description",
+      "nullable": true
+    },
+    {
+      "label": "Fields",
+      "name": "fields",
+      "type": "json",
+      "comment": "Fields",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Industries",
+      "name": "industries",
+      "type": "json",
+      "comment": "Industries",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Tags",
+      "name": "tags",
+      "type": "json",
+      "comment": "Tags",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Relation",
+      "name": "relation",
+      "type": "enum",
+      "default": "Connecting",
+      "option": ["Regular", "Connecting", "Potential"],
+      "comment": "Relation: Regular, Connecting, Potential",
+      "index": true
+    }
+  ],
+  "relations": {
+    "channel": {
+      "type": "hasOne",
+      "model": "channel",
+      "key": "id",
+      "foreign": "channel_id",
+      "query": {
+        "select": ["id", "name"]
+      }
+    }
+  },
+  "option": {
+    "timestamps": true,
+    "soft_deletes": true
+  }
+}

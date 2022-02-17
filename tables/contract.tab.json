@@ -1,0 +1,104 @@
+{
+  "name": "Contracts",
+  "version": "1.0.0",
+  "decription": "Contracts",
+  "bind": {
+    "model": "contract"
+  },
+  "apis": {
+    "search": {
+      "default": [
+        {
+          "withs": {
+            "project": { "query": { "withs": { "customer": {} } } },
+            "user": {}
+          },
+          "orders": [{ "column": "updated_at", "option": "desc" }]
+        },
+        null,
+        10
+      ]
+    }
+  },
+  "columns": {
+    "ID": { "@": "column.Label", "in": ["ID", ":id"] },
+    "CreatedAt": { "@": "column.CreatedAt" },
+    "UpdatedAt": { "@": "column.UpdatedAt" },
+    "SignAt": { "@": "column.SignAt" },
+    "ExpiredAt": { "@": "column.ExpiredAt" },
+    "Manager": { "@": "column.Manager" },
+    "Status": { "@": "column.ContractStatus" },
+    "Company": {
+      "label": "Project",
+      "view": {
+        "type": "label",
+        "props": {
+          "value": ":customer.name"
+        }
+      }
+    },
+    "Project": {
+      "label": "Project",
+      "view": {
+        "type": "label",
+        "props": {
+          "value": ":project.name"
+        }
+      }
+    },
+    "Task Project": { "@": "column.Project" },
+    "Files": { "@": "column.Files" }
+  },
+  "filters": {
+    "Keywords": { "@": "filter.Keywords", "in": ["where.prject.name.match"] }
+  },
+  "list": {
+    "primary": "id",
+    "layout": {
+      "columns": [
+        { "name": "ID", "width": 80 },
+        { "name": "Company", "width": 200 },
+        { "name": "Project", "width": 200 },
+        { "name": "SignAt", "width": 140 },
+        { "name": "ExpiredAt", "width": 140 },
+        { "name": "Status", "width": 140 },
+        { "name": "UpdatedAt", "width": 160 }
+      ],
+      "filters": [{ "name": "Keywords" }]
+    },
+    "actions": {
+      "create": {
+        "type": "button",
+        "props": { "label": "Upload", "icon": "fas fa-plus" }
+      },
+      "pagination": {
+        "props": { "showTotal": true }
+      }
+    },
+    "option": {}
+  },
+  "edit": {
+    "primary": "id",
+    "layout": {
+      "fieldset": [
+        {
+          "columns": [
+            { "name": "Task Project", "width": 12 },
+            { "name": "Manager", "width": 6 },
+            { "name": "Status", "width": 6 },
+            { "name": "SignAt", "width": 12 },
+            { "name": "ExpiredAt", "width": 12 },
+            { "name": "Files", "width": 24 }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "cancel": {},
+      "save": { "@": "action.Save" },
+      "delete": { "@": "action.Delete" }
+    }
+  },
+  "insert": {},
+  "view": {}
+}

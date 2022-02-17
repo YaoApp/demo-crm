@@ -1,0 +1,18 @@
+{
+  "label": "Industries",
+  "version": "1.0.0",
+  "description": "Industries",
+  "nodes": [
+    {
+      "name": "Industries",
+      "engine": "xiang",
+      "query": {
+        "select": [":COUNT(id) as CNT", "industries[*] as name"],
+        "from": "$customer",
+        "groups": "name",
+        "orders": "CNT desc"
+      }
+    }
+  ],
+  "output": "{{$res.Industries}}"
+}

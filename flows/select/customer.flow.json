@@ -1,0 +1,17 @@
+{
+  "label": "Customers",
+  "version": "1.0.0",
+  "description": "Customers",
+  "nodes": [
+    {
+      "name": "Customers",
+      "engine": "xiang",
+      "query": {
+        "select": ["id", ":IF(:ISNULL(short_name), name, short_name) as name"],
+        "from": "customer",
+        "limit": 1000
+      }
+    }
+  ],
+  "output": "{{$res.Customers}}"
+}

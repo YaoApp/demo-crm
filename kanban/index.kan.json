@@ -1,0 +1,169 @@
+{
+  "label": "Kanban",
+  "version": "1.0.0",
+  "description": "Kanban",
+  "nodes": [
+    {
+      "name": "Industries",
+      "process": "flows.chart.industries"
+    },
+    {
+      "name": "Fields",
+      "process": "flows.chart.fields"
+    },
+    {
+      "name": "Trails",
+      "process": "flows.chart.trail"
+    },
+    {
+      "name": "Projects",
+      "process": "flows.chart.project"
+    },
+    {
+      "name": "Tasks",
+      "process": "flows.chart.task"
+    }
+  ],
+  "output": {
+    "data": "{{$res}}",
+    "query": "{{$in}}"
+  },
+  "apis": {
+    "data": {
+      "default": [{ "from": "1980-01-02", "to": "2050-12-31" }]
+    }
+  },
+  "filters": {},
+  "page": {
+    "primary": "name",
+    "layout": {
+      "filters": [],
+      "charts": [
+        {
+          "name": "Industries",
+          "width": 9,
+          "type": "pie",
+          "props": {
+            "height": 240,
+            "x_key": "name",
+            "tooltip": {
+              "textStyle": { "color": "#a2a5b9", "fontSize": 12 },
+              "backgroundColor": "#232326",
+              "borderRadius": 6
+            },
+            "legend": {
+              "show": true
+            },
+            "series": [
+              {
+                "name": "CNT",
+                "type": "pie",
+                "roseType": "area",
+                "radius": [10, 100],
+                "center": ["50%", "50%"],
+                "itemStyle": { "borderRadius": 3 }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Fields",
+          "width": 9,
+          "type": "bar",
+          "props": {
+            "height": 240,
+            "x_key": "name",
+            "tooltip": {
+              "textStyle": { "color": "#a2a5b9", "fontSize": 12 },
+              "backgroundColor": "#232326",
+              "borderRadius": 6
+            },
+            "legend": {
+              "show": true
+            },
+            "series": [
+              {
+                "name": "CNT",
+                "type": "bar",
+                "roseType": "area",
+                "radius": [10, 100],
+                "center": ["60%", "50%"],
+                "itemStyle": { "borderRadius": 3 }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Tasks",
+          "width": 6,
+          "type": "table",
+          "props": {
+            "height": 240,
+            "columns": [
+              {
+                "title": "Task",
+                "dataIndex": "name"
+              },
+              {
+                "title": "Status",
+                "dataIndex": "status"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Trails",
+          "width": 24,
+          "type": "table",
+          "props": {
+            "height": 240,
+            "columns": [
+              {
+                "title": "Customer",
+                "dataIndex": "customer_name"
+              },
+              {
+                "title": "Project",
+                "dataIndex": "name"
+              },
+              {
+                "title": "Contact",
+                "dataIndex": "contact_name"
+              },
+              {
+                "title": "Mobile",
+                "dataIndex": "contact_mobile"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Projects",
+          "width": 24,
+          "type": "table",
+          "props": {
+            "height": 240,
+            "columns": [
+              {
+                "title": "Priority",
+                "dataIndex": "priority"
+              },
+              {
+                "title": "Project",
+                "dataIndex": "name"
+              },
+              {
+                "title": "Process",
+                "dataIndex": "process"
+              },
+              {
+                "title": "Customer",
+                "dataIndex": "customer_name"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+data
+
+private.*
+.DS_Store
+db/
+logs/

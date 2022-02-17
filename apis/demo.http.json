@@ -1,0 +1,29 @@
+{
+  "name": "Demo",
+  "version": "1.0.0",
+  "description": "demo",
+  "group": "demo",
+  "guard": "-",
+  "paths": [
+    {
+      "path": "/user",
+      "method": "GET",
+      "process": "flows.demo.user",
+      "in": [],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    },
+    {
+      "path": "/admin",
+      "method": "GET",
+      "process": "flows.demo.admin",
+      "in": [],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    }
+  ]
+}

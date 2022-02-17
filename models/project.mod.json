@@ -1,0 +1,215 @@
+{
+  "name": "Project",
+  "table": {
+    "name": "project",
+    "comment": "Project Table",
+    "engine": "InnoDB"
+  },
+  "columns": [
+    {
+      "label": "ID",
+      "name": "id",
+      "type": "ID",
+      "comment": "ID"
+    },
+    {
+      "label": "Customer",
+      "name": "customer_id",
+      "type": "bigInteger",
+      "comment": "Customer"
+    },
+    {
+      "label": "BizManager",
+      "name": "biz_id",
+      "type": "bigInteger",
+      "nullable": true,
+      "comment": "BizManager"
+    },
+    {
+      "label": "TechManager",
+      "name": "tech_id",
+      "type": "bigInteger",
+      "nullable": true,
+      "comment": "TechManager"
+    },
+    {
+      "label": "Name",
+      "name": "name",
+      "type": "string",
+      "length": 600,
+      "comment": "Name"
+    },
+    {
+      "label": "Summary",
+      "name": "summary",
+      "type": "string",
+      "length": 600,
+      "comment": "Summary",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Description",
+      "name": "desc",
+      "type": "text",
+      "comment": "Description",
+      "nullable": true
+    },
+    {
+      "label": "Report",
+      "name": "report",
+      "type": "text",
+      "comment": "Report",
+      "nullable": true
+    },
+    {
+      "label": "Priority",
+      "name": "priority",
+      "type": "enum",
+      "default": "C",
+      "option": ["A", "B", "C", "D"],
+      "comment": "Priority: A  B  C  D ",
+      "index": true
+    },
+    {
+      "label": "Suitability",
+      "name": "suitability",
+      "type": "enum",
+      "default": "40",
+      "option": ["0", "20", "40", "60", "80", "100"],
+      "comment": "Suitability: 0 , 10~100",
+      "index": true
+    },
+    {
+      "label": "Intention",
+      "name": "intention",
+      "type": "enum",
+      "default": "40",
+      "option": ["0", "20", "40", "60", "80", "100"],
+      "comment": "Intention: 0 , 10~100",
+      "index": true
+    },
+    {
+      "label": "Process",
+      "name": "process",
+      "type": "enum",
+      "default": "Connecting",
+      "option": [
+        "Connecting",
+        "Connected",
+        "Docking",
+        "Docked",
+        "Signing",
+        "Signed",
+        "FirstPay",
+        "Pending",
+        "Completed",
+        "Paid"
+      ],
+      "comment": "Process: Connecting",
+      "index": true
+    },
+    {
+      "label": "Budget",
+      "name": "budget",
+      "type": "decimal",
+      "scale": 4,
+      "comment": "Budget",
+      "default": 0,
+      "nullable": true
+    },
+    {
+      "label": "PriceDeal",
+      "name": "price_deal",
+      "type": "decimal",
+      "scale": 4,
+      "comment": "PriceDeal",
+      "default": 0,
+      "nullable": true
+    },
+    {
+      "label": "PriceCompleted",
+      "name": "price_completed",
+      "type": "decimal",
+      "scale": 4,
+      "comment": "PriceCompleted",
+      "default": 0,
+      "nullable": true
+    },
+    {
+      "label": "PriceShould",
+      "name": "price_payable",
+      "type": "decimal",
+      "scale": 4,
+      "comment": "PriceShould",
+      "default": 0,
+      "nullable": true
+    },
+    {
+      "label": "CostMarketing",
+      "name": "cost_get",
+      "type": "integer",
+      "scale": 4,
+      "comment": "CostMarketing",
+      "default": 0,
+      "nullable": true
+    },
+    {
+      "label": "CostBiz",
+      "name": "cost_op",
+      "type": "integer",
+      "scale": 4,
+      "comment": "CostBiz",
+      "default": 0,
+      "nullable": true
+    },
+    {
+      "label": "Contact",
+      "name": "contact_name",
+      "type": "string",
+      "length": 200,
+      "comment": "Contact",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "ContactTitle",
+      "name": "contact_title",
+      "type": "string",
+      "length": 200,
+      "comment": "ContactTitle",
+      "nullable": true,
+      "index": true
+    },
+    {
+      "label": "Mobile",
+      "name": "contact_mobile",
+      "type": "string",
+      "comment": "Mobile",
+      "nullable": true,
+      "index": true
+    }
+  ],
+  "relations": {
+    "customer": {
+      "type": "hasOne",
+      "model": "customer",
+      "key": "id",
+      "foreign": "customer_id",
+      "query": {}
+    },
+    "biz": {
+      "type": "hasOne",
+      "model": "xiang.user",
+      "key": "id",
+      "foreign": "biz_id",
+      "query": {
+        "select": ["id", "name"]
+      }
+    }
+  },
+  "option": {
+    "timestamps": true,
+    "soft_deletes": true
+  }
+}

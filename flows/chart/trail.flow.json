@@ -1,0 +1,32 @@
+{
+  "label": "Trails",
+  "version": "1.0.0",
+  "description": "Trails",
+  "nodes": [
+    {
+      "name": "Trails",
+      "engine": "xiang",
+      "query": {
+        "select": [
+          "customer.name as customer_name",
+          "customer.city",
+          "project.name",
+          "project.contact_name",
+          "project.contact_mobile"
+        ],
+        "from": "$project",
+        "joins": [
+          {
+            "from": "customer",
+            "key": "customer.id",
+            "foreign": "project.customer_id",
+            "left": true
+          }
+        ],
+        "orders": "project.created_at desc",
+        "limit": 20
+      }
+    }
+  ],
+  "output": "{{$res.Trails}}"
+}

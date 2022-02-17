@@ -1,0 +1,101 @@
+{
+  "City": {
+    "label": "City",
+    "view": {
+      "type": "label",
+      "props": {
+        "value": ":customer.city"
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "showSearch": true,
+        "placeholder": "Pick a customer",
+        "value": "customer_id",
+        "remote": {
+          "api": "/api/select/customer",
+          "query": {
+            "select": ["id", "name"],
+            "keyword": "where.customer.id.in"
+          }
+        }
+      }
+    }
+  },
+  "LOGO": {
+    "label": "LOGO",
+    "view": {
+      "type": "image",
+      "props": {
+        "value": ":customer.logo",
+        "width": 40,
+        "height": 40
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "showSearch": true,
+        "placeholder": "Pick a customer",
+        "value": "customer_id",
+        "remote": {
+          "api": "/api/select/customer",
+          "query": {
+            "select": ["id", "name"],
+            "keyword": "where.customer.id.in"
+          }
+        }
+      }
+    }
+  },
+  "Company": {
+    "__comment": "customer.Company",
+    "label": "Company",
+    "view": {
+      "type": "label",
+      "props": {
+        "value": ":customer.name"
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "showSearch": true,
+        "placeholder": "Pick a customer",
+        "value": "customer_id",
+        "remote": {
+          "api": "/api/select/customer",
+          "query": {
+            "select": ["id", "name"],
+            "keyword": "where.customer.id.in"
+          }
+        }
+      }
+    }
+  },
+  "ShortName": {
+    "label": "ShortName",
+    "view": {
+      "type": "label",
+      "props": {
+        "value": ":customer.short_name"
+      }
+    },
+    "edit": {
+      "type": "select",
+      "props": {
+        "showSearch": true,
+        "placeholder": "Pick a customer",
+        "value": "customer_id",
+        "remote": {
+          "api": "/api/select/customer",
+          "query": {
+            "select": ["id", "name"],
+            "keyword": "where.customer.id.in"
+          }
+        }
+      }
+    }
+  }
+}

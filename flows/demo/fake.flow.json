@@ -1,0 +1,94 @@
+{
+  "label": "Import Demo Data",
+  "version": "1.0.0",
+  "description": "Import Demo Data",
+  "nodes": [
+    {
+      "name": "Clean Admin",
+      "engine": "xiang",
+      "query": {
+        "sql": { "stmt": "truncate `xiang_user`" }
+      }
+    },
+    {
+      "name": "Data",
+      "script": "data"
+    },
+    {
+      "name": "Customer",
+      "process": "xiang.helper.ArraySplit",
+      "args": ["{{$res.Data.Customer}}"]
+    },
+    {
+      "name": "Channel",
+      "process": "xiang.helper.ArraySplit",
+      "args": ["{{$res.Data.Channel}}"]
+    },
+    {
+      "name": "Project",
+      "process": "xiang.helper.ArraySplit",
+      "args": ["{{$res.Data.Project}}"]
+    },
+    {
+      "name": "Tasks",
+      "process": "xiang.helper.ArraySplit",
+      "args": ["{{$res.Data.Tasks}}"]
+    },
+    {
+      "name": "Contract",
+      "process": "xiang.helper.ArraySplit",
+      "args": ["{{$res.Data.Contract}}"]
+    },
+    {
+      "name": "User",
+      "process": "xiang.helper.ArraySplit",
+      "args": ["{{$res.Data.User}}"]
+    },
+    {
+      "name": "Admin",
+      "process": "xiang.helper.ArraySplit",
+      "args": ["{{$res.Data.Admin}}"]
+    },
+    {
+      "name": "Update Menu",
+      "process": "flows.init.menu",
+      "args": []
+    },
+    {
+      "name": "Insert Admin",
+      "process": "models.xiang.user.Insert",
+      "args": ["{{$res.Admin.columns}}", "{{$res.Admin.values}}"]
+    },
+    {
+      "name": "Insert Channel",
+      "process": "models.channel.Insert",
+      "args": ["{{$res.Channel.columns}}", "{{$res.Channel.values}}"]
+    },
+    {
+      "name": "Insert Customer",
+      "process": "models.customer.Insert",
+      "args": ["{{$res.Customer.columns}}", "{{$res.Customer.values}}"]
+    },
+    {
+      "name": "Insert Project",
+      "process": "models.project.Insert",
+      "args": ["{{$res.Project.columns}}", "{{$res.Project.values}}"]
+    },
+    {
+      "name": "Insert Tasks",
+      "process": "models.task.Insert",
+      "args": ["{{$res.Tasks.columns}}", "{{$res.Tasks.values}}"]
+    },
+    {
+      "name": "Insert Contract",
+      "process": "models.contract.Insert",
+      "args": ["{{$res.Contract.columns}}", "{{$res.Contract.values}}"]
+    },
+    {
+      "name": "Insert User",
+      "process": "models.user.Insert",
+      "args": ["{{$res.User.columns}}", "{{$res.User.values}}"]
+    }
+  ],
+  "output": {}
+}

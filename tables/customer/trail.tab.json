@@ -1,0 +1,191 @@
+{
+  "name": "Customer trails",
+  "version": "1.0.0",
+  "decription": "Customer trails",
+  "bind": {
+    "model": "project"
+  },
+  "apis": {
+    "search": {
+      "default": [
+        {
+          "withs": {
+            "customer": { "query": { "withs": { "channel": {} } } },
+            "biz": {},
+            "tech": {}
+          },
+          "wheres": [{ "column": "biz_id", "op": "null" }],
+          "orders": [{ "column": "created_at", "option": "desc" }]
+        },
+        null,
+        10
+      ]
+    }
+  },
+  "columns": {
+    "ID": { "@": "column.Label", "in": ["ID", ":id"] },
+    "CreatedAt": { "@": "column.CreatedAt" },
+    "UpdatedAt": { "@": "column.UpdatedAt" },
+    "Priority": { "@": "column.Priority" },
+    "Suitability": { "@": "column.Suitability" },
+    "Intention": { "@": "column.Intention" },
+    "Process": { "@": "column.Process" },
+    "BizManager": {
+      "label": "BizManager",
+      "view": {
+        "type": "label",
+        "props": {
+          "value": ":biz.name"
+        }
+      },
+      "edit": {
+        "__comment": "这里应该替换为呼出工作流界面",
+        "type": "select",
+        "props": {
+          "showSearch": true,
+          "placeholder": "请指派BizManagerManager",
+          "value": ":biz_id",
+          "remote": {
+            "api": "/api/select/xiang.user",
+            "query": {
+              "select": ["id", "name"],
+              "keyword": "where.biz_id.in"
+            }
+          }
+        }
+      }
+    },
+    "Description": {
+      "@": "column.TextArea",
+      "in": ["Description", ":desc", 4]
+    },
+    "Report": { "@": "column.TextArea", "in": ["Report", ":report", 4] },
+    "Task": {
+      "label": "Task",
+      "edit": {
+        "type": "table",
+        "props": {
+          "name": "task.db",
+          "query": { "where.project_id.eq": ":id" }
+        }
+      }
+    },
+    "City": { "@": "customer.City" },
+    "LOGO": { "@": "customer.LOGO" },
+    "ShortName": { "@": "customer.ShortName" },
+    "Company": { "@": "customer.Company" },
+    "Channel": { "@": "channel.ChannelName" },
+    "CustomerProject": {
+      "@": "column.Block",
+      "in": ["LOGO", "Project", "Company"]
+    },
+    "Project": {
+      "label": "Project",
+      "view": {
+        "type": "label",
+        "props": {
+          "value": ":name"
+        }
+      },
+      "edit": {
+        "type": "textArea",
+        "props": {
+          "value": ":summary",
+          "rows": 4
+        }
+      }
+    }
+  },
+  "filters": {
+    "Keywords": { "@": "filter.Keywords", "in": ["where.name.match"] },
+    "Orders": { "@": "filter.Orders" },
+    "Channel": { "@": "filter.Channel" }
+  },
+  "list": {
+    "primary": "id",
+    "layout": {
+      "columns": [
+        { "name": "ID", "width": 80 },
+        { "name": "CustomerProject", "width": 260 },
+        { "name": "Priority", "width": 100 },
+        { "name": "BizManager", "width": 100 },
+        { "name": "Contact", "width": 100 },
+        { "name": "Mobile", "width": 140 },
+        { "name": "Channel", "width": 100 },
+        { "name": "CreatedAt" }
+      ],
+      "filters": [
+        { "name": "Keywords" },
+        { "name": "Channel", "width": 3 },
+        { "name": "Orders", "width": 3 }
+      ]
+    },
+    "actions": {
+      "create": {
+        "type": "button",
+        "props": {
+          "label": "New Trail",
+          "icon": "fas fa-plus"
+        }
+      },
+      "pagination": {
+        "props": { "showTotal": true }
+      }
+    },
+    "option": {
+      "operation": {
+        "width": 160,
+        "unfold": true,
+        "items": []
+      }
+    }
+  },
+  "edit": {
+    "primary": "id",
+    "layout": {
+      "fieldset": [
+        {
+          "title": "",
+          "description": "",
+          "columns": [
+            { "name": "Name", "width": 12 },
+            { "name": "Company", "width": 12 },
+            { "name": "Budget", "width": 12 },
+            { "name": "Priority", "width": 3 },
+            { "name": "Suitability", "width": 3 },
+            { "name": "Intention", "width": 3 },
+            { "name": "Process", "width": 3 },
+            { "name": "BizManager", "width": 12 },
+            { "name": "Contact", "width": 12 },
+            { "name": "Mobile", "width": 12 },
+            { "name": "Summary", "width": 24 },
+            { "name": "Description", "width": 24 },
+            { "name": "Task", "width": 24 }
+          ]
+        },
+        {
+          "title": "Data",
+          "description": "",
+          "columns": [
+            { "name": "PriceDeal", "width": 12 },
+            { "name": "PriceCompleted", "width": 12 },
+            { "name": "PriceShould", "width": 12 },
+            { "name": "CostMarketing", "width": 12 },
+            { "name": "CostBiz", "width": 12 },
+            { "name": "Report", "width": 24 }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "cancel": {},
+      "save": { "@": "action.Save" },
+      "delete": { "@": "action.Delete" }
+    },
+    "option": {
+      "dev": false
+    }
+  },
+  "insert": {},
+  "view": {}
+}

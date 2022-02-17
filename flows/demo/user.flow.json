@@ -1,0 +1,23 @@
+{
+  "label": "Auto Login",
+  "version": "1.0.0",
+  "description": "Auto Login for demo",
+  "nodes": [
+    {
+      "name": "Users",
+      "process": "models.user.Get",
+      "args": [
+        {
+          "select": ["id", "mobile", "name", "user_id", "open_id", "union_id"],
+          "limit": 1
+        }
+      ]
+    },
+    {
+      "name": "Reponse",
+      "process": "flows.login.Token",
+      "args": ["{{$res.Users.0.id}}"]
+    }
+  ],
+  "output": "{{$res.Reponse}}"
+}

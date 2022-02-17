@@ -1,0 +1,21 @@
+{
+  "name": "Yao CRM",
+  "short": "Yao CRM",
+  "description": "Yao CRM",
+  "option": {
+    "nav_user": "admin",
+    "nav_menu": "xiang.menu",
+    "hide_user": false,
+    "hide_menu": true,
+    "login": {
+      "entry": {
+        "admin": "/kanban/index",
+        "user": "/table/project.user.submit"
+      },
+      "password": {
+        "captcha": "/api/user/captcha",
+        "login": "/api/user/login"
+      }
+    }
+  }
+}
