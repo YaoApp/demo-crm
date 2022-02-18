@@ -9,7 +9,7 @@
       "args": [
         {
           "select": ["id", "email", "name", "type"],
-          "wheres": [{ "column": "id", "value": "?:$in.0" }],
+          "wheres": [{ "column": "id", "value": 1 }],
           "limit": 1
         }
       ]
