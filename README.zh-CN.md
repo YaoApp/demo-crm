@@ -4,7 +4,7 @@
 
 [English](README.md)
 
-仓库管理系统
+客户管理系统演示
 
 参考文档: [https://yaoapps.com/doc](https://yaoapps.com/doc/%E4%BB%8B%E7%BB%8D/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97)
 

@@ -4,7 +4,7 @@
 
 [中文介绍](README.zh-CN.md)
 
-Warehouse Management Sytem
+Customer Management System Demo
 
 Documentation: [https://yaoapps.com/en-US/doc](https://yaoapps.com/en-US/doc/Introduction/Getting%20Started)
 
