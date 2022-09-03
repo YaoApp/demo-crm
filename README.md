@@ -25,7 +25,7 @@ docker run -d -p 5099:5099 --restart unless-stopped \
     -e YAO_PROCESS_DEMO=flows.demo.fake \
     -e YAO_DB_DRIVER=mysql \
     -e YAO_DB_PRIMARY="yao:123456@tcp(172.17.0.1:3307)/yao?charset=utf8mb4&parseTime=True&loc=Local" \
-    yaoapp/demo-crm:1.0.3-amd64
+    yaoapp/demo-crm:1.0.0-amd64
 ```
 
 ### Yao
