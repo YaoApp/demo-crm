@@ -2,17 +2,17 @@
 
 ![Image](docs/images/intro.jpg)
 
-[中文介绍](README.zh-CN.md)
+[English](README.md)
 
-Warehouse Management Sytem
+仓库管理系统
 
-Documentation: [https://yaoapps.com/en-US/doc](https://yaoapps.com/en-US/doc/Introduction/Getting%20Started)
+参考文档: [https://yaoapps.com/doc](https://yaoapps.com/doc/%E4%BB%8B%E7%BB%8D/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97)
 
-## USAGE
+## 下载安装
 
-### Docker
+### 使用 Docker 运行
 
-MySQL(Optional)
+MySQL(可选)
 
 ```bash
 docker run -d -p 3307:3306 --restart unless-stopped -e MYSQL_PASSWORD=123456 yaoapp/mysql:8.0-amd64
@@ -28,16 +28,16 @@ docker run -d -p 5099:5099 --restart unless-stopped \
     yaoapp/demo-crm:1.0.3-amd64
 ```
 
-### Yao
+### 在本地运行
 
-#### Download source code
+#### 下载源码
 
 ```bash
 git clone https://github.com/YaoApp/demo-crm /app/path/crm
 
 ```
 
-#### Set the environment variables
+#### 设置环境变量
 
 ```bash
 
@@ -54,36 +54,36 @@ YAO_LOG="/app/path/crm/logs/application.log"
 YAO_LOG_MODE="TEXT"  #  TEXT | JSON
 YAO_JWT_SECRET="bLp@bi!oqo-2U+hoTRUG"
 YAO_DB_DRIVER=mysql
-YAO_DB_PRIMARY="yao:123456@tcp(172.17.0.1:3307)/yao?charset=utf8mb4&parseTime=True&loc=Local"  # Replace your setting
+YAO_DB_PRIMARY="yao:123456@tcp(172.17.0.1:3307)/yao?charset=utf8mb4&parseTime=True&loc=Local"  # 替换为你的数据库配置
 EOF > /app/path/crm/.env
 ```
 
-#### Initialization
+#### 项目初始化
 
 ```bash
 cd /app/path/crm
 
-# Create tables & set menu
+# 创建数据表 & 设置菜单
 yao migrate --reset
 yao run flows.init.menu
 
-# Demo data
+# 演示数据
 yao run flows.demo.fake
 
 ```
 
-#### Start the service
+#### 启动服务
 
 ```bash
 cd /app/path/crm
 yao start
 ```
 
-## ADMIN
+## 管理后台
 
-Open the browser to visit the URL:
+打开浏览器输入以下网址进入:
 
 http://127.0.0.1:5099/xiang/login/admin
 
-User Name: `xiang@iqka.com`
-Password: `A123456p+`
+用户名: `xiang@iqka.com`
+密码: `A123456p+`
